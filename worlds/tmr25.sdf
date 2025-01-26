@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <sdf version="1.9">
-  <world name="default">
+  <world name="tmr25">
     <physics type="ode">
       <max_step_size>0.004</max_step_size>
       <real_time_factor>1.0</real_time_factor>
@@ -214,11 +214,26 @@
       <self_collide>false</self_collide>
     </model>
 
-    <!-- Insert gz harmonic default banana-->
+    <!-- Insert arucos model --> 
     <include>
-      <uri>file:///root/.gz/fuel/fuel.gazebosim.org/mjcarroll/models/banana for scale/3</uri>
-      <name>Banana for Scale</name>
-      <pose>10.061364832683149684 -1.6517016938700972 0 0 0 0</pose>
+      <uri>model://aruco100</uri>
+      <name>aruco100</name>
+      <pose>3 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://aruco105</uri>
+      <name>aruco105</name>
+      <pose>6 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://aruco200</uri>
+      <name>aruco200</name>
+      <pose>3 3 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://aruco500</uri>
+      <name>aruco500</name>
+      <pose>6 3 0 0 0 0</pose>
     </include>
 
     <light name="sunUTC" type="directional">

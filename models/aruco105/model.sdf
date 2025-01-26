@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='aruco105'>
+    <static>true</static>
+    <pose>0 0 0.001 0 0 0</pose>
+    <link name='base_link'>
+      <visual name='visual'>
+	<geometry>
+	  <mesh>
+	    <uri>model://aruco105/aruco105.dae</uri>
+	  </mesh>
+	</geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
