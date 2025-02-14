@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="aruco_200">
+    <pose>0 0 0.01 0 0 0</pose> <!-- Elevacion de 1 cm-->
+    <static>true</static>
+    <link name="link">
+
+      <!-- Visualización del modelo -->
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://aruco_200/meshes/aruco_15_x_15.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <!-- Colisión usando el mismo modelo DAE -->
+      <!-- <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://aruco_200/meshes/aruco_15_x_15.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision> -->
+
+    </link>
+  </model>
+</sdf>

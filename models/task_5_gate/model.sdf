@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="task_5_gate">
+    <pose>0 0 0 0 0 0</pose>
+    <static>true</static>
+    <link name="link">
+
+      <!-- Visualización del modelo -->
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://task_5_gate/meshes/task_5_gate.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <!-- Colisión usando el mismo modelo DAE -->
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://task_5_gate/meshes/task_5_gate.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+
+    </link>
+  </model>
+</sdf>
