@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
-  <model name="screen">
+  <model name="tmr_screen">
     <pose>0 0 0.01 0 0 0</pose>
     <static>true</static>
     <link name="link">
@@ -9,7 +9,7 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>model://screen/meshes/screen.dae</uri>
+            <uri>model://tmr_screen/meshes/screen.dae</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
