@@ -59,6 +59,7 @@
             <near>0.1</near>
             <far>3000</far>
           </clip>
+	  <camera_info_topic>camera_front/camera_info</camera_info_topic>
         </camera>
         <always_on>1</always_on>
         <update_rate>30</update_rate>
