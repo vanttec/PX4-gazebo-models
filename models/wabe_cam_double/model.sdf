@@ -7,21 +7,23 @@
     </include>
     <include merge='true'>
       <uri>model://mono_cam_down</uri>
-      <pose>0 0 .10 0 1.5707 0</pose>
+      <pose relative_to="base_link">-0.01253 -0.06193 -0.04208 0 1.5707 0</pose>
     </include>
     <joint name="DownCameraJoint" type="fixed">
       <parent>base_link</parent>
       <child>mono_cam_down/base_link</child>
-      <pose relative_to="base_link">0 0 0 0 1.5707 0</pose>
+      <!--pose relative_to="base_link">0 0 0 0 0 0</pose-->
+      <pose relative_to="base_link">0 0 0 0 0 0</pose>
     </joint>
     <include merge='true'>
       <uri>model://mono_cam_front</uri>
-      <pose>0.12 0.03 0.242 0 0 0</pose>
+      <!--pose relative_to="base_link">0.05637 0.0029 -0.015 0 0 0</pose-->
+      <pose relative_to="base_link">0.04637 0.00588 -0.04308 0 0 0</pose>
     </include>
     <joint name="FrontCameraJoint" type="fixed">
       <parent>base_link</parent>
       <child>mono_cam_front/base_link</child>
-      <pose relative_to="base_link">0.12 0.03 0.242 0 0 0</pose>
+      <pose relative_to="base_link">0 0 0 0 0 0</pose>
     </joint>
   </model>
 </sdf>
