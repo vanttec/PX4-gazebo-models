@@ -219,31 +219,6 @@
       <self_collide>false</self_collide>
     </model>
     <include>
-      <uri>model://task_5_gate</uri>
-      <name>task_5_gate</name>
-      <pose>3.9213714716091803 1.2717184087351809 0 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://task_2_gate</uri>
-      <name>task_2_gate</name>
-      <pose>3.1916925218446091 4.9327605810254198 0 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://task3_20_x_20</uri>
-      <name>task3_20_x_20</name>
-      <pose>7.678128869583575 4.9102877032979571 0 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://task3_35_x_35</uri>
-      <name>task3_35_x_35</name>
-      <pose>6.6473463074666439 4.9122147558800222 0 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://task3_50_x_50</uri>
-      <name>task3_50_x_50</name>
-      <pose>5.6003220462759975 4.932373623183004 0 0 0 0</pose>
-    </include>
-    <include>
       <uri>model://aruco_100</uri>
       <name>aruco_100</name>
       <pose>-0.0024154459870563347 -0.010033602726560995 0.01 0 0 0</pose>
@@ -252,31 +227,6 @@
       <uri>model://aruco_105</uri>
       <name>aruco_105</name>
       <pose>-0.0022312176168809037 4.9167917513903969 0.01 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://aruco_200</uri>
-      <name>aruco_200</name>
-      <pose>2.7076667865655608 4.9175116607163591 0.01 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://aruco_205</uri>
-      <name>aruco_205</name>
-      <pose>3.6856566159562965 4.9177021253322577 0.01 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://aruco_300</uri>
-      <name>aruco_300</name>
-      <pose>5.5986252551862492 4.9217072044361032 1.0055000000000001 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://aruco_301</uri>
-      <name>aruco_301</name>
-      <pose>6.6450452001115634 4.8996605790580832 1.0049999999999999 0 0 0</pose>
-    </include>
-    <include>
-      <uri>model://aruco_302</uri>
-      <name>aruco_302</name>
-      <pose>7.6785889776000982 4.913059229054821 1.0049999999999999 0 0 0</pose>
     </include>
     <include>
       <uri>model://aruco_400</uri>
