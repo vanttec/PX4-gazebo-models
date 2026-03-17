@@ -267,13 +267,13 @@
   <include>
     <uri>model://LandingZone</uri>
     <name>TakeoffZone</name>
-    <pose>-4.2 -4.2 0.002 0 0 0</pose>
+    <pose>-4.2 -4.2 0.002 0 0 3.14</pose>
   </include>
 
   <include>
     <uri>model://LandingZone</uri>
     <name>LandingZone_2</name>
-    <pose>4.2 -4.2 0.002 0 0 0</pose>
+    <pose>4.2 -4.2 0.002 0 0 3.14</pose>
   </include>
 
   <include>
