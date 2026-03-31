@@ -299,6 +299,12 @@
     <pose>3.2 -5 1.5 1.5708 0 3.1416</pose>
   </include>
 
+  <include>
+    <uri>model://Aruco_100</uri>
+    <name>aruco_100</name>
+    <pose>3.6 -5 2.0 1.5708 0 3.1416</pose>
+  </include>
+
   <model name="gate_large_blue">
     <static>true</static>
     <pose>-3.2 2.1 0 1.5708 0 1.5708</pose>
