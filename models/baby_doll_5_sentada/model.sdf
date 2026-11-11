@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name="baby_doll_5_sentada">
+    <static>true</static>
+    <link name="link">
+      <inertial>
+        <pose>0.0088 0.0000 0.1122 0 0 0</pose>
+        <mass>0.300</mass>
+        <inertia><ixx>0.001682</ixx><iyy>0.001686</iyy><izz>0.000512</izz><ixy>0.000000</ixy><ixz>0.000068</ixz><iyz>0.000000</iyz></inertia>
+      </inertial>
+      <visual name="piel">
+        <geometry><mesh><uri>model://baby_doll_5_sentada/meshes/piel.stl</uri></mesh></geometry>
+        <material><ambient>0.860 0.620 0.480 1</ambient><diffuse>0.860 0.620 0.480 1</diffuse><specular>0.04 0.04 0.04 1</specular></material>
+      </visual>
+      <visual name="camiseta">
+        <geometry><mesh><uri>model://baby_doll_5_sentada/meshes/camiseta.stl</uri></mesh></geometry>
+        <material><ambient>0.950 0.940 0.900 1</ambient><diffuse>0.950 0.940 0.900 1</diffuse><specular>0.04 0.04 0.04 1</specular></material>
+      </visual>
+      <visual name="ojos_blanco">
+        <geometry><mesh><uri>model://baby_doll_5_sentada/meshes/ojos_blanco.stl</uri></mesh></geometry>
+        <material><ambient>0.960 0.960 0.950 1</ambient><diffuse>0.960 0.960 0.950 1</diffuse><specular>0.25 0.25 0.25 1</specular></material>
+      </visual>
+      <visual name="ojos_iris">
+        <geometry><mesh><uri>model://baby_doll_5_sentada/meshes/ojos_iris.stl</uri></mesh></geometry>
+        <material><ambient>0.250 0.140 0.080 1</ambient><diffuse>0.250 0.140 0.080 1</diffuse><specular>0.25 0.25 0.25 1</specular></material>
+      </visual>
+      <visual name="boca">
+        <geometry><mesh><uri>model://baby_doll_5_sentada/meshes/boca.stl</uri></mesh></geometry>
+        <material><ambient>0.720 0.320 0.340 1</ambient><diffuse>0.720 0.320 0.340 1</diffuse><specular>0.04 0.04 0.04 1</specular></material>
+      </visual>
+      <collision name="colision">
+        <geometry><mesh><uri>model://baby_doll_5_sentada/meshes/colision.stl</uri></mesh></geometry>
+        <surface><friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction></surface>
+      </collision>
+    </link>
+  </model>
+</sdf>

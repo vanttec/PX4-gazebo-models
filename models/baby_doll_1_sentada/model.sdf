@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name="baby_doll_1_sentada">
+    <static>true</static>
+    <link name="link">
+      <inertial>
+        <pose>0.0163 -0.0000 0.1293 0 0 0</pose>
+        <mass>0.550</mass>
+        <inertia><ixx>0.005098</ixx><iyy>0.005240</iyy><izz>0.001887</izz><ixy>-0.000000</ixy><ixz>0.000461</ixz><iyz>0.000000</iyz></inertia>
+      </inertial>
+      <visual name="piel">
+        <geometry><mesh><uri>model://baby_doll_1_sentada/meshes/piel.stl</uri></mesh></geometry>
+        <material><ambient>0.960 0.840 0.780 1</ambient><diffuse>0.960 0.840 0.780 1</diffuse><specular>0.04 0.04 0.04 1</specular></material>
+      </visual>
+      <visual name="camiseta">
+        <geometry><mesh><uri>model://baby_doll_1_sentada/meshes/camiseta.stl</uri></mesh></geometry>
+        <material><ambient>0.930 0.720 0.740 1</ambient><diffuse>0.930 0.720 0.740 1</diffuse><specular>0.04 0.04 0.04 1</specular></material>
+      </visual>
+      <visual name="pantalon">
+        <geometry><mesh><uri>model://baby_doll_1_sentada/meshes/pantalon.stl</uri></mesh></geometry>
+        <material><ambient>0.950 0.910 0.870 1</ambient><diffuse>0.950 0.910 0.870 1</diffuse><specular>0.04 0.04 0.04 1</specular></material>
+      </visual>
+      <visual name="ojos_blanco">
+        <geometry><mesh><uri>model://baby_doll_1_sentada/meshes/ojos_blanco.stl</uri></mesh></geometry>
+        <material><ambient>0.960 0.960 0.950 1</ambient><diffuse>0.960 0.960 0.950 1</diffuse><specular>0.25 0.25 0.25 1</specular></material>
+      </visual>
+      <visual name="ojos_iris">
+        <geometry><mesh><uri>model://baby_doll_1_sentada/meshes/ojos_iris.stl</uri></mesh></geometry>
+        <material><ambient>0.380 0.500 0.620 1</ambient><diffuse>0.380 0.500 0.620 1</diffuse><specular>0.25 0.25 0.25 1</specular></material>
+      </visual>
+      <visual name="boca">
+        <geometry><mesh><uri>model://baby_doll_1_sentada/meshes/boca.stl</uri></mesh></geometry>
+        <material><ambient>0.720 0.320 0.340 1</ambient><diffuse>0.720 0.320 0.340 1</diffuse><specular>0.04 0.04 0.04 1</specular></material>
+      </visual>
+      <collision name="colision">
+        <geometry><mesh><uri>model://baby_doll_1_sentada/meshes/colision.stl</uri></mesh></geometry>
+        <surface><friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction></surface>
+      </collision>
+    </link>
+  </model>
+</sdf>
