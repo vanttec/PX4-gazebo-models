@@ -148,7 +148,7 @@
       </gz-gui>
       <play_pause>1</play_pause>
       <step>1</step>
-      <start_paused>1</start_paused>  
+      <start_paused>0</start_paused>
     </plugin>
 
     <plugin name="World stats" filename="WorldStats">
@@ -300,7 +300,7 @@
   </include>
 
   <include>
-    <uri>model://Aruco_100</uri>
+    <uri>model://aruco_100</uri>
     <name>aruco_100</name>
     <pose>3.6 -5 2.0 1.5708 0 3.1416</pose>
   </include>
