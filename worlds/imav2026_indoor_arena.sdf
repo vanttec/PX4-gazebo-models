@@ -12,6 +12,146 @@
       <render_engine>ogre2</render_engine>
     </plugin>
     <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu" />
+    <gui fullscreen="false">
+
+      <plugin name="3D View" filename="MinimalScene">
+        <gz-gui>
+          <title>3D View</title>
+          <property type="bool"   key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </gz-gui>
+        <engine>ogre2</engine>
+        <scene>scene</scene>
+        <ambient_light>0.4 0.4 0.4</ambient_light>
+        <background_color>0.85 0.85 0.85</background_color>
+        <camera_pose>12 -1.5 5.5 0 0.5 3.141593</camera_pose>
+        <camera_clip>
+          <near>0.25</near>
+          <far>25000</far>
+        </camera_clip>
+      </plugin>
+
+      <plugin name="Entity context menu" filename="EntityContextMenuPlugin">
+        <gz-gui>
+          <property key="state"        type="string">floating</property>
+          <property key="width"        type="double">5</property>
+          <property key="height"       type="double">5</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+
+      <plugin name="Scene Manager" filename="GzSceneManager">
+        <gz-gui>
+          <property key="resizable"    type="bool">false</property>
+          <property key="width"        type="double">5</property>
+          <property key="height"       type="double">5</property>
+          <property key="state"        type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+
+      <plugin name="Interactive view control" filename="InteractiveViewControl">
+        <gz-gui>
+          <property key="resizable"    type="bool">false</property>
+          <property key="width"        type="double">5</property>
+          <property key="height"       type="double">5</property>
+          <property key="state"        type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+
+      <plugin name="Camera Tracking" filename="CameraTracking">
+        <gz-gui>
+          <property key="resizable"    type="bool">false</property>
+          <property key="width"        type="double">5</property>
+          <property key="height"       type="double">5</property>
+          <property key="state"        type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+
+      <plugin name="Marker manager" filename="MarkerManager">
+        <gz-gui>
+          <property key="resizable"    type="bool">false</property>
+          <property key="width"        type="double">5</property>
+          <property key="height"       type="double">5</property>
+          <property key="state"        type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+
+      <plugin name="Select Entities" filename="SelectEntities">
+        <gz-gui>
+          <property key="resizable"    type="bool">false</property>
+          <property key="width"        type="double">5</property>
+          <property key="height"       type="double">5</property>
+          <property key="state"        type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+
+      <plugin name="Visualization Capabilities" filename="VisualizationCapabilities">
+        <gz-gui>
+          <property key="resizable"    type="bool">false</property>
+          <property key="width"        type="double">5</property>
+          <property key="height"       type="double">5</property>
+          <property key="state"        type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+
+      <plugin name="Spawn Entities" filename="Spawn">
+        <gz-gui>
+          <property key="resizable"    type="bool">false</property>
+          <property key="width"        type="double">5</property>
+          <property key="height"       type="double">5</property>
+          <property key="state"        type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </gz-gui>
+      </plugin>
+
+      <plugin name="World control" filename="WorldControl">
+        <gz-gui>
+          <title>World control</title>
+          <property type="bool"   key="showTitleBar">0</property>
+          <property type="bool"   key="resizable">0</property>
+          <property type="double" key="height">72</property>
+          <property type="double" key="width">121</property>
+          <property type="double" key="z">1</property>
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="left"   target="left"/>
+            <line own="bottom" target="bottom"/>
+          </anchors>
+        </gz-gui>
+        <play_pause>1</play_pause>
+        <step>1</step>
+        <start_paused>1</start_paused>
+      </plugin>
+
+      <plugin name="World stats" filename="WorldStats">
+        <gz-gui>
+          <title>World stats</title>
+          <property type="bool"   key="showTitleBar">0</property>
+          <property type="bool"   key="resizable">0</property>
+          <property type="double" key="height">110</property>
+          <property type="double" key="width">290</property>
+          <property type="double" key="z">1</property>
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="right"  target="right"/>
+            <line own="bottom" target="bottom"/>
+          </anchors>
+        </gz-gui>
+        <sim_time>1</sim_time>
+        <real_time>1</real_time>
+        <real_time_factor>1</real_time_factor>
+        <iterations>1</iterations>
+      </plugin>
+
+      <plugin name="Entity tree" filename="EntityTree"/>
+
+    </gui>
     <light type="directional" name="sun">
       <cast_shadows>true</cast_shadows>
       <pose>0 0 10 0 0 0</pose>
@@ -268,7 +408,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -288,7 +428,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -308,7 +448,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -328,7 +468,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -348,7 +488,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -368,7 +508,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -388,7 +528,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -408,7 +548,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -428,7 +568,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -448,7 +588,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -468,7 +608,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -488,7 +628,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -508,7 +648,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -528,7 +668,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -548,7 +688,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -568,7 +708,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -588,7 +728,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -608,7 +748,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -628,7 +768,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -648,7 +788,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -668,7 +808,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -688,7 +828,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -708,7 +848,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -728,7 +868,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -748,7 +888,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -768,7 +908,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -788,7 +928,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -808,7 +948,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -828,7 +968,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -848,7 +988,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -868,7 +1008,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -888,7 +1028,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -908,7 +1048,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -928,7 +1068,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -948,7 +1088,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -968,7 +1108,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -988,7 +1128,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1008,7 +1148,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1028,7 +1168,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1048,7 +1188,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1068,7 +1208,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1088,7 +1228,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1108,7 +1248,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1128,7 +1268,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1148,7 +1288,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1168,7 +1308,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1188,7 +1328,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1208,7 +1348,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1228,7 +1368,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1248,7 +1388,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1268,7 +1408,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1288,7 +1428,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1308,7 +1448,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1328,7 +1468,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1348,7 +1488,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1368,7 +1508,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1388,7 +1528,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1408,7 +1548,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1428,7 +1568,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1448,7 +1588,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1468,7 +1608,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1488,7 +1628,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1508,7 +1648,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1528,7 +1668,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1548,7 +1688,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1568,7 +1708,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1588,7 +1728,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1608,7 +1748,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1628,7 +1768,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1648,7 +1788,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1668,7 +1808,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1688,7 +1828,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1708,7 +1848,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1728,7 +1868,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1748,7 +1888,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1768,7 +1908,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1788,7 +1928,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1808,7 +1948,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1828,7 +1968,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -1848,7 +1988,7 @@
             <specular>0 0 0 1</specular>
             <pbr>
               <metal>
-                <albedo_map>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_flores.png</albedo_map>
+                <albedo_map>textures/piso_flores.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>1.0</roughness>
               </metal>
@@ -2628,10 +2768,10 @@
           </geometry>
         </collision>
         <visual name="w0_bord0_vis">
-          <pose>5.503 -0.345 1.4875 0 0 0</pose>
+          <pose>5.5 -0.345 1.4875 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.67 0.035</size>
+              <size>0.034 0.67 0.035</size>
             </box>
           </geometry>
           <material>
@@ -2640,10 +2780,10 @@
           </material>
         </visual>
         <visual name="w0_bord1_vis">
-          <pose>5.503 -0.345 0.9525 0 0 0</pose>
+          <pose>5.5 -0.345 0.9525 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.67 0.035</size>
+              <size>0.034 0.67 0.035</size>
             </box>
           </geometry>
           <material>
@@ -2652,10 +2792,10 @@
           </material>
         </visual>
         <visual name="w0_bord2_vis">
-          <pose>5.503 -0.6625 1.22 0 0 0</pose>
+          <pose>5.5 -0.6625 1.22 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.035 0.5</size>
+              <size>0.034 0.035 0.5</size>
             </box>
           </geometry>
           <material>
@@ -2664,10 +2804,10 @@
           </material>
         </visual>
         <visual name="w0_bord3_vis">
-          <pose>5.503 -0.0275 1.22 0 0 0</pose>
+          <pose>5.5 -0.0275 1.22 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.035 0.5</size>
+              <size>0.034 0.035 0.5</size>
             </box>
           </geometry>
           <material>
@@ -2676,10 +2816,10 @@
           </material>
         </visual>
         <visual name="w1_bord0_vis">
-          <pose>5.503 0.473 1.4375 0 0 0</pose>
+          <pose>5.5 0.473 1.4375 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.47 0.035</size>
+              <size>0.034 0.47 0.035</size>
             </box>
           </geometry>
           <material>
@@ -2688,10 +2828,10 @@
           </material>
         </visual>
         <visual name="w1_bord1_vis">
-          <pose>5.503 0.473 1.0025 0 0 0</pose>
+          <pose>5.5 0.473 1.0025 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.47 0.035</size>
+              <size>0.034 0.47 0.035</size>
             </box>
           </geometry>
           <material>
@@ -2700,10 +2840,10 @@
           </material>
         </visual>
         <visual name="w1_bord2_vis">
-          <pose>5.503 0.2555 1.22 0 0 0</pose>
+          <pose>5.5 0.2555 1.22 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.035 0.4</size>
+              <size>0.034 0.035 0.4</size>
             </box>
           </geometry>
           <material>
@@ -2712,10 +2852,10 @@
           </material>
         </visual>
         <visual name="w1_bord3_vis">
-          <pose>5.503 0.6905 1.22 0 0 0</pose>
+          <pose>5.5 0.6905 1.22 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.035 0.4</size>
+              <size>0.034 0.035 0.4</size>
             </box>
           </geometry>
           <material>
@@ -3273,10 +3413,10 @@
           </geometry>
         </collision>
         <visual name="w0_bord0_vis">
-          <pose>-0.997 -0.345 1.4875 0 0 0</pose>
+          <pose>-1 -0.345 1.4875 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.67 0.035</size>
+              <size>0.034 0.67 0.035</size>
             </box>
           </geometry>
           <material>
@@ -3285,10 +3425,10 @@
           </material>
         </visual>
         <visual name="w0_bord1_vis">
-          <pose>-0.997 -0.345 0.9525 0 0 0</pose>
+          <pose>-1 -0.345 0.9525 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.67 0.035</size>
+              <size>0.034 0.67 0.035</size>
             </box>
           </geometry>
           <material>
@@ -3297,10 +3437,10 @@
           </material>
         </visual>
         <visual name="w0_bord2_vis">
-          <pose>-0.997 -0.6625 1.22 0 0 0</pose>
+          <pose>-1 -0.6625 1.22 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.035 0.5</size>
+              <size>0.034 0.035 0.5</size>
             </box>
           </geometry>
           <material>
@@ -3309,10 +3449,10 @@
           </material>
         </visual>
         <visual name="w0_bord3_vis">
-          <pose>-0.997 -0.0275 1.22 0 0 0</pose>
+          <pose>-1 -0.0275 1.22 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.035 0.5</size>
+              <size>0.034 0.035 0.5</size>
             </box>
           </geometry>
           <material>
@@ -3321,10 +3461,10 @@
           </material>
         </visual>
         <visual name="w1_bord0_vis">
-          <pose>-0.997 0.473 1.4375 0 0 0</pose>
+          <pose>-1 0.473 1.4375 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.47 0.035</size>
+              <size>0.034 0.47 0.035</size>
             </box>
           </geometry>
           <material>
@@ -3333,10 +3473,10 @@
           </material>
         </visual>
         <visual name="w1_bord1_vis">
-          <pose>-0.997 0.473 1.0025 0 0 0</pose>
+          <pose>-1 0.473 1.0025 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.47 0.035</size>
+              <size>0.034 0.47 0.035</size>
             </box>
           </geometry>
           <material>
@@ -3345,10 +3485,10 @@
           </material>
         </visual>
         <visual name="w1_bord2_vis">
-          <pose>-0.997 0.2555 1.22 0 0 0</pose>
+          <pose>-1 0.2555 1.22 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.035 0.4</size>
+              <size>0.034 0.035 0.4</size>
             </box>
           </geometry>
           <material>
@@ -3357,10 +3497,10 @@
           </material>
         </visual>
         <visual name="w1_bord3_vis">
-          <pose>-0.997 0.6905 1.22 0 0 0</pose>
+          <pose>-1 0.6905 1.22 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.006 0.035 0.4</size>
+              <size>0.034 0.035 0.4</size>
             </box>
           </geometry>
           <material>
@@ -8624,46 +8764,6 @@
         </visual>
       </link>
     </model>
-    <model name="cono_oficial_7g">
-      <static>false</static>
-      <pose>5.9 -1.45 0 0 0 0</pose>
-      <link name="link">
-        <inertial>
-          <pose>0 0 0.01250 0 0 0</pose>
-          <mass>0.007</mass>
-          <inertia>
-            <ixx>1.1878e-06</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1.1878e-06</iyy>
-            <iyz>0</iyz>
-            <izz>1.0631e-06</izz>
-          </inertia>
-        </inertial>
-        <visual name="cono_vis">
-          <pose>-0.000000 0.000000 0.000000 3.141593 0.000000 0.000000</pose>
-          <geometry>
-            <mesh>
-              <uri>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/meshes/cone_interreg.stl</uri>
-              <scale>0.001 0.001 0.001</scale>
-            </mesh>
-          </geometry>
-          <material>
-            <ambient>1 0.5 0 1</ambient>
-            <diffuse>1 0.5 0 1</diffuse>
-          </material>
-        </visual>
-        <collision name="cono_col">
-          <pose>-0.000000 0.000000 0.000000 3.141593 0.000000 0.000000</pose>
-          <geometry>
-            <mesh>
-              <uri>file:///root/PX4-Autopilot/Tools/simulation/gz/worlds/meshes/cone_interreg.stl</uri>
-              <scale>0.001 0.001 0.001</scale>
-            </mesh>
-          </geometry>
-        </collision>
-      </link>
-    </model>
     <model name="camas_m2">
       <static>true</static>
       <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
@@ -8763,7 +8863,7 @@
       <pose>0.0000 0.0000 0.0000 0.0000 0.0000 0.0000</pose>
       <link name="link">
         <collision name="caja0_fondo_col">
-          <pose>-2.5000 -0.4000 0.0050 0.0000 0.0000 0.0000</pose>
+          <pose>-2.1833 -0.3800 0.0050 0.0000 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.4700 0.2800 0.0100</size>
@@ -8779,7 +8879,7 @@
           </surface>
         </collision>
         <visual name="caja0_fondo">
-          <pose>-2.5000 -0.4000 0.0050 0.0000 0.0000 0.0000</pose>
+          <pose>-2.1833 -0.3800 0.0050 0.0000 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.4700 0.2800 0.0100</size>
@@ -8792,7 +8892,7 @@
           </material>
         </visual>
         <collision name="caja0_larga1_col">
-          <pose>-2.5000 -0.2400 0.0750 -0.2606 0.0000 0.0000</pose>
+          <pose>-2.1833 -0.2200 0.0750 -0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -8808,7 +8908,7 @@
           </surface>
         </collision>
         <visual name="caja0_larga1">
-          <pose>-2.5000 -0.2400 0.0750 -0.2606 0.0000 0.0000</pose>
+          <pose>-2.1833 -0.2200 0.0750 -0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -8821,7 +8921,7 @@
           </material>
         </visual>
         <collision name="caja0_corta1_col">
-          <pose>-2.2450 -0.4000 0.0750 0.0000 0.2606 0.0000</pose>
+          <pose>-1.9283 -0.3800 0.0750 0.0000 0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -8837,7 +8937,7 @@
           </surface>
         </collision>
         <visual name="caja0_corta1">
-          <pose>-2.2450 -0.4000 0.0750 0.0000 0.2606 0.0000</pose>
+          <pose>-1.9283 -0.3800 0.0750 0.0000 0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -8850,7 +8950,7 @@
           </material>
         </visual>
         <collision name="caja0_larga-1_col">
-          <pose>-2.5000 -0.5600 0.0750 0.2606 0.0000 0.0000</pose>
+          <pose>-2.1833 -0.5400 0.0750 0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -8866,7 +8966,7 @@
           </surface>
         </collision>
         <visual name="caja0_larga-1">
-          <pose>-2.5000 -0.5600 0.0750 0.2606 0.0000 0.0000</pose>
+          <pose>-2.1833 -0.5400 0.0750 0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -8879,7 +8979,7 @@
           </material>
         </visual>
         <collision name="caja0_corta-1_col">
-          <pose>-2.7550 -0.4000 0.0750 0.0000 -0.2606 0.0000</pose>
+          <pose>-2.4383 -0.3800 0.0750 0.0000 -0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -8895,7 +8995,7 @@
           </surface>
         </collision>
         <visual name="caja0_corta-1">
-          <pose>-2.7550 -0.4000 0.0750 0.0000 -0.2606 0.0000</pose>
+          <pose>-2.4383 -0.3800 0.0750 0.0000 -0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -8908,7 +9008,7 @@
           </material>
         </visual>
         <collision name="caja1_fondo_col">
-          <pose>-2.5000 0.0000 0.0050 0.0000 0.0000 0.0000</pose>
+          <pose>-3.1334 0.0000 0.0050 0.0000 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.4700 0.2800 0.0100</size>
@@ -8924,7 +9024,7 @@
           </surface>
         </collision>
         <visual name="caja1_fondo">
-          <pose>-2.5000 0.0000 0.0050 0.0000 0.0000 0.0000</pose>
+          <pose>-3.1334 0.0000 0.0050 0.0000 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.4700 0.2800 0.0100</size>
@@ -8937,7 +9037,7 @@
           </material>
         </visual>
         <collision name="caja1_larga1_col">
-          <pose>-2.5000 0.1600 0.0750 -0.2606 0.0000 0.0000</pose>
+          <pose>-3.1334 0.1600 0.0750 -0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -8953,7 +9053,7 @@
           </surface>
         </collision>
         <visual name="caja1_larga1">
-          <pose>-2.5000 0.1600 0.0750 -0.2606 0.0000 0.0000</pose>
+          <pose>-3.1334 0.1600 0.0750 -0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -8966,7 +9066,7 @@
           </material>
         </visual>
         <collision name="caja1_corta1_col">
-          <pose>-2.2450 0.0000 0.0750 0.0000 0.2606 0.0000</pose>
+          <pose>-2.8784 0.0000 0.0750 0.0000 0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -8982,7 +9082,7 @@
           </surface>
         </collision>
         <visual name="caja1_corta1">
-          <pose>-2.2450 0.0000 0.0750 0.0000 0.2606 0.0000</pose>
+          <pose>-2.8784 0.0000 0.0750 0.0000 0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -8995,7 +9095,7 @@
           </material>
         </visual>
         <collision name="caja1_larga-1_col">
-          <pose>-2.5000 -0.1600 0.0750 0.2606 0.0000 0.0000</pose>
+          <pose>-3.1334 -0.1600 0.0750 0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -9011,7 +9111,7 @@
           </surface>
         </collision>
         <visual name="caja1_larga-1">
-          <pose>-2.5000 -0.1600 0.0750 0.2606 0.0000 0.0000</pose>
+          <pose>-3.1334 -0.1600 0.0750 0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -9024,7 +9124,7 @@
           </material>
         </visual>
         <collision name="caja1_corta-1_col">
-          <pose>-2.7550 0.0000 0.0750 0.0000 -0.2606 0.0000</pose>
+          <pose>-3.3884 0.0000 0.0750 0.0000 -0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -9040,7 +9140,7 @@
           </surface>
         </collision>
         <visual name="caja1_corta-1">
-          <pose>-2.7550 0.0000 0.0750 0.0000 -0.2606 0.0000</pose>
+          <pose>-3.3884 0.0000 0.0750 0.0000 -0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -9053,7 +9153,7 @@
           </material>
         </visual>
         <visual name="caja1_punto_caliente">
-          <pose>-2.5000 0.0000 0.0120 0.0000 0.0000 0.0000</pose>
+          <pose>-3.1334 0.0000 0.0120 0.0000 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.1600 0.1600 0.0020</size>
@@ -9066,7 +9166,7 @@
           </material>
         </visual>
         <collision name="caja2_fondo_col">
-          <pose>-2.5000 0.4000 0.0050 0.0000 0.0000 0.0000</pose>
+          <pose>-2.1833 0.3800 0.0050 0.0000 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.4700 0.2800 0.0100</size>
@@ -9082,7 +9182,7 @@
           </surface>
         </collision>
         <visual name="caja2_fondo">
-          <pose>-2.5000 0.4000 0.0050 0.0000 0.0000 0.0000</pose>
+          <pose>-2.1833 0.3800 0.0050 0.0000 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.4700 0.2800 0.0100</size>
@@ -9095,7 +9195,7 @@
           </material>
         </visual>
         <collision name="caja2_larga1_col">
-          <pose>-2.5000 0.5600 0.0750 -0.2606 0.0000 0.0000</pose>
+          <pose>-2.1833 0.5400 0.0750 -0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -9111,7 +9211,7 @@
           </surface>
         </collision>
         <visual name="caja2_larga1">
-          <pose>-2.5000 0.5600 0.0750 -0.2606 0.0000 0.0000</pose>
+          <pose>-2.1833 0.5400 0.0750 -0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -9124,7 +9224,7 @@
           </material>
         </visual>
         <collision name="caja2_corta1_col">
-          <pose>-2.2450 0.4000 0.0750 0.0000 0.2606 0.0000</pose>
+          <pose>-1.9283 0.3800 0.0750 0.0000 0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -9140,7 +9240,7 @@
           </surface>
         </collision>
         <visual name="caja2_corta1">
-          <pose>-2.2450 0.4000 0.0750 0.0000 0.2606 0.0000</pose>
+          <pose>-1.9283 0.3800 0.0750 0.0000 0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -9153,7 +9253,7 @@
           </material>
         </visual>
         <collision name="caja2_larga-1_col">
-          <pose>-2.5000 0.2400 0.0750 0.2606 0.0000 0.0000</pose>
+          <pose>-2.1833 0.2200 0.0750 0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -9169,7 +9269,7 @@
           </surface>
         </collision>
         <visual name="caja2_larga-1">
-          <pose>-2.5000 0.2400 0.0750 0.2606 0.0000 0.0000</pose>
+          <pose>-2.1833 0.2200 0.0750 0.2606 0.0000 0.0000</pose>
           <geometry>
             <box>
               <size>0.5500 0.0100 0.1552</size>
@@ -9182,7 +9282,7 @@
           </material>
         </visual>
         <collision name="caja2_corta-1_col">
-          <pose>-2.7550 0.4000 0.0750 0.0000 -0.2606 0.0000</pose>
+          <pose>-2.4383 0.3800 0.0750 0.0000 -0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -9198,7 +9298,7 @@
           </surface>
         </collision>
         <visual name="caja2_corta-1">
-          <pose>-2.7550 0.4000 0.0750 0.0000 -0.2606 0.0000</pose>
+          <pose>-2.4383 0.3800 0.0750 0.0000 -0.2606 0.0000</pose>
           <geometry>
             <box>
               <size>0.0100 0.3600 0.1552</size>
@@ -9228,7 +9328,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9248,7 +9348,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9268,7 +9368,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9288,7 +9388,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9308,7 +9408,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9328,7 +9428,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9348,7 +9448,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9368,7 +9468,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9388,7 +9488,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9408,7 +9508,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9428,7 +9528,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9448,7 +9548,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9468,7 +9568,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9488,7 +9588,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9508,7 +9608,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9528,7 +9628,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9548,7 +9648,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9568,7 +9668,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9588,7 +9688,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9608,7 +9708,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9628,7 +9728,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9648,7 +9748,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9668,7 +9768,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9688,7 +9788,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9708,7 +9808,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9728,7 +9828,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9748,7 +9848,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9768,7 +9868,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9788,7 +9888,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9808,7 +9908,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9828,7 +9928,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9848,7 +9948,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9868,7 +9968,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9888,7 +9988,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9908,7 +10008,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9928,7 +10028,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9948,7 +10048,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9968,7 +10068,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -9988,7 +10088,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10008,7 +10108,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10028,7 +10128,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10048,7 +10148,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10068,7 +10168,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10088,7 +10188,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10108,7 +10208,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10128,7 +10228,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10148,7 +10248,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10168,7 +10268,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10188,7 +10288,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10208,7 +10308,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10228,7 +10328,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10248,7 +10348,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10268,7 +10368,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10288,7 +10388,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10308,7 +10408,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10328,7 +10428,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10348,7 +10448,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10368,7 +10468,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10388,7 +10488,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10408,7 +10508,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10428,7 +10528,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10448,7 +10548,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10468,7 +10568,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10488,7 +10588,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10508,7 +10608,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10528,7 +10628,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10548,7 +10648,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10568,7 +10668,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10588,7 +10688,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10608,7 +10708,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10628,7 +10728,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10648,7 +10748,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10668,7 +10768,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10688,7 +10788,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10708,7 +10808,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10728,7 +10828,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10748,7 +10848,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10768,7 +10868,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10788,7 +10888,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10808,7 +10908,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10828,7 +10928,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10848,7 +10948,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10868,7 +10968,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10888,7 +10988,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10908,7 +11008,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10928,7 +11028,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10948,7 +11048,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10968,7 +11068,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -10988,7 +11088,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11008,7 +11108,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11028,7 +11128,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11048,7 +11148,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11068,7 +11168,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11088,7 +11188,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11108,7 +11208,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11128,7 +11228,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11148,7 +11248,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
@@ -11168,7 +11268,7 @@
             <specular>0.05 0.05 0.05 1</specular>
             <pbr>
               <metal>
-                <albedo_map>/root/PX4-Autopilot/Tools/simulation/gz/worlds/textures/piso_terrazo.png</albedo_map>
+                <albedo_map>textures/piso_terrazo.png</albedo_map>
                 <metalness>0.0</metalness>
                 <roughness>0.65</roughness>
               </metal>
